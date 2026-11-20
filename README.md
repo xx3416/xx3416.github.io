@@ -11,9 +11,9 @@ repository root.
 
 | Area | Contents |
 | --- | --- |
-| Navbar | Name + affiliation, in-page anchors (Home, About, Publications, Press, Students, Activities, Datasets, News) |
+| Navbar | Name + affiliation, in-page anchors (Home, About, Publications, Press, Activities, Datasets, News) |
 | Header | Portrait, name, role, academic-leave status |
-| Body | About, publications (2011 → 2027), press coverage, students, professional service, datasets & tools, news |
+| Body | About, publications (2011 → 2025), press coverage, professional service, datasets & tools, news |
 
 ## What was removed
 
@@ -23,10 +23,11 @@ The page carries no way to contact or trace the person it describes:
 * CV (both the navbar link, the section and `CV.pdf`)
 * Google Scholar, DBLP, Twitter and GitHub profile links
 * the sidebar's CLASS teaching list, news column and sponsor logos
+* the students section and its navigation entry
 * the 2026 and 2027 publication entries (see `EXCLUDE_YEARS` below)
 
-The remaining external links are the publication PDFs and code repositories
-that the reference site itself publishes — see `STRIP_REFERENCE_LINKS` below.
+The paper and dataset links that used to point back at the reference site
+are now rendered as inert chips — the page contains no path back to it.
 
 ## Adaptations vs. the reference site
 
@@ -37,7 +38,7 @@ that the reference site itself publishes — see `STRIP_REFERENCE_LINKS` below.
 * **Single column** — the reference's 3/9 sidebar split is gone; the page is
   one centred column with the portrait in a header block.
 * **Single page** — the reference's `publication.html`, `press.html`,
-  `students.html`, `activity.html` and `data.html` content is merged into
+  `activity.html` and `data.html` content is merged into
   in-page sections, and the navbar links are anchors.
 * All 62 news items live in the "News" section of the body.
 

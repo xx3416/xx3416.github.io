@@ -54,7 +54,6 @@ PAGE_MAP = {
     "news.html": "#news-archive",
     "publication.html": "#publications",
     "press.html": "#press",
-    "students.html": "#students",
     "activity.html": "#activities",
     "data.html": "#datasets",
     "talks.html": "#talks",
@@ -177,7 +176,7 @@ home = strip_comments(sanitize_snapshot("gangw.html", read("gangw.html")))
 
 # Every other snapshot is scrubbed on disk too, so no copy of the reference
 # site keeps a contact detail or a back-link.
-for _snapshot in ("publication.html", "press.html", "students.html",
+for _snapshot in ("publication.html", "press.html",
                   "activity.html", "data.html"):
     sanitize_snapshot(_snapshot, read(_snapshot))
 
@@ -220,7 +219,6 @@ for m in re.finditer(r'<h5><font color="red">(\d{4})</font></h5>(.*?)(?=<h5><fon
     if items:
         pub_groups.append((m.group(1), items))
 
-students_body = block(strip_comments(read("students.html")), '<div class="col-xs-12">', "</body>")
 activity_body = block(strip_comments(read("activity.html")), '<div class="col-xs-12">', "</body>")
 data_body = block(strip_comments(read("data.html")), '<div class="col-xs-12">', "</body>")
 
@@ -235,7 +233,6 @@ def sections(body, heading_pattern):
     return out
 
 
-students_sections = sections(students_body, r"<h5>(?:<strong>)?.*?</h5>")
 activity_sections = sections(activity_body, r"<h5>.*?</h5>")
 data_sections = sections(data_body, r"<h5>.*?</h5>")
 
@@ -247,7 +244,6 @@ NAV = [
     ("#about", "About"),
     ("#publications", "Publications"),
     ("#press", "Press"),
-    ("#students", "Students"),
     ("#activities", "Activities"),
     ("#datasets", "Datasets"),
     ("#news-archive", "News"),
@@ -296,7 +292,6 @@ def news_block(items):
 
 
 PRESS_BLOCK = "\n".join('            <p>%s</p>' % clean(p) for p in press_items)
-STUDENTS_BLOCK = "\n".join(clean(s) for s in students_sections)
 ACTIVITY_BLOCK = "\n".join(clean(s) for s in activity_sections)
 DATA_BLOCK = "\n".join(clean(s) for s in data_sections)
 
@@ -371,11 +366,6 @@ PAGE = """<!DOCTYPE html>
 %s
     </section>
 
-    <section id="students" class="page-section">
-      <h2>Students</h2>
-%s
-    </section>
-
     <section id="activities" class="page-section">
       <h2>Professional Activities</h2>
 %s
@@ -407,7 +397,6 @@ PAGE = PAGE % (
     BIO,
     "\n".join(PUBLICATIONS),
     PRESS_BLOCK,
-    STUDENTS_BLOCK,
     ACTIVITY_BLOCK,
     DATA_BLOCK,
     news_block(news_items),
@@ -422,6 +411,5 @@ print("  press     : %d" % len(press_items))
 kept = [(y, i) for y, i in pub_groups if y not in EXCLUDE_YEARS]
 print("  pubs      : %d year groups, %d entries (excluded years: %s)" % (
     len(kept), sum(len(i) for _, i in kept), ", ".join(sorted(EXCLUDE_YEARS)) or "none"))
-print("  students  : %d sections" % len(students_sections))
 print("  activity  : %d sections" % len(activity_sections))
 print("  datasets  : %d sections" % len(data_sections))
