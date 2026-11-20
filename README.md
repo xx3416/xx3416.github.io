@@ -27,6 +27,8 @@ The page carries no way to contact or trace the person it describes:
 * the 2026 and 2027 publication entries (see `EXCLUDE_YEARS` below)
 * the `Code` and `Press` quick-link buttons on the publication entries
   (see `REMOVE_QUICKLINKS` below)
+* the 11 most recent news entries, from "28 Sep 2026" to "7 Oct 2025"
+  (see `NEWS_SKIP` below)
 
 The paper and dataset links that used to point back at the reference site
 are now rendered as inert chips — the page contains no path back to it.
@@ -42,7 +44,7 @@ are now rendered as inert chips — the page contains no path back to it.
 * **Single page** — the reference's `publication.html`, `press.html`,
   `activity.html` and `data.html` content is merged into
   in-page sections, and the navbar links are anchors.
-* All 62 news items live in the "News" section of the body.
+* The 51 news items from 17 Aug 2025 back to 26 May 2022 live in the "News" section.
 
 ## Layout files
 

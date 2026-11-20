@@ -41,6 +41,11 @@ QUICKLINK = re.compile(
     r'<a[^>]*class="[^"]*btn-xs[^"]*"[^>]*>\s*(?:%s)\s*</a>' % "|".join(REMOVE_QUICKLINKS),
     re.I)
 
+# The most recent news entries are not listed on the page: everything from
+# "28 Sep 2026" down to and including "7 Oct 2025" (Revelio) is dropped, so
+# the oldest entry shown is "17 Aug 2025".
+NEWS_SKIP = 11
+
 # The reference snapshot is kept in the repository so the page can be rebuilt
 # offline, which means it must not carry the contact details of the person it
 # describes. These are stripped from the snapshot on every build and the
@@ -407,14 +412,17 @@ PAGE = PAGE % (
     PRESS_BLOCK,
     ACTIVITY_BLOCK,
     DATA_BLOCK,
-    news_block(news_items),
+    news_block(news_items[NEWS_SKIP:]),
 )
 
 with io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
     fh.write(PAGE)
 
 print("index.html written: %d bytes" % len(PAGE.encode("utf-8")))
-print("  news      : %d (all in the archived-news section)" % len(news_items))
+print("  news      : %d shown (%d skipped, oldest shown: %s)" % (
+    len(news_items) - NEWS_SKIP, NEWS_SKIP,
+    (re.search(r"<strong>([^<]+)</strong>", news_items[NEWS_SKIP]).group(1)
+     if NEWS_SKIP < len(news_items) else "n/a")))
 print("  press     : %d" % len(press_items))
 kept = [(y, i) for y, i in pub_groups if y not in EXCLUDE_YEARS]
 print("  pubs      : %d year groups, %d entries (excluded years: %s)" % (
