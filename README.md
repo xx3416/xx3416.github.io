@@ -10,8 +10,8 @@ repository root.
 
 | Area | Contents |
 | --- | --- |
-| Navbar | Name + affiliation, in-page anchors (Home, Publications, Press, Students, Activities, Datasets, CV) |
-| Sidebar | Avatar, contact, scholar/DBLP/Twitter/GitHub links, CLASS list, latest news, sponsor logos |
+| Navbar | Name + affiliation, in-page anchors (Home, Publications, Press, Students, Activities, Datasets, News, CV) |
+| Sidebar | Avatar, contact, scholar/DBLP/Twitter/GitHub links |
 | Main column | Bio, publications (2011 → 2027), press coverage, students, professional service, datasets & tools, archived news, CV |
 
 ## Adaptations vs. the reference site
@@ -21,11 +21,14 @@ repository root.
 * **University wordmark replaced** with plain `ByteDance` text in the navbar.
 * **Bio rewritten** to state that Gang Wang is a Research Scientist at ByteDance
   and has been on academic leave from UIUC since June 2025.
+* **Sidebar trimmed** — the UIUC office address, phone, CLASS teaching list,
+  news column and sponsor logos were dropped; the sidebar now holds just the
+  avatar, the contact line and the scholar/DBLP/Twitter/GitHub buttons. All 62
+  news items live in the "Archived News" section of the main column, which the
+  navbar reaches through the **News** link.
 * **Single page** — the reference's `publication.html`, `press.html`,
   `students.html`, `activity.html` and `data.html` content is merged into
   in-page sections, and the navbar links are anchors.
-* **News split** — the 12 most recent items sit in the sidebar, the remaining 50
-  are in the "Archived News" section at the bottom.
 * Paper/asset links point back at `gangw.cs.illinois.edu`, since the PDFs and
   datasets themselves are not hosted here.
 
@@ -37,7 +40,7 @@ css/bootstrap.css   Bootstrap 3.3.4 (from the reference site)
 css/non-responsive.css
 css/site.css        local overrides
 css/*.js            jQuery + Bootstrap (navbar toggle)
-image/              sponsor logos + avatar
+image/avatar.svg    portrait placeholder
 fonts/              pushpin icon
 CV.pdf              curriculum vitae
 ```

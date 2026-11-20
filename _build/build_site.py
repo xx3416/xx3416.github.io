@@ -139,7 +139,6 @@ home = strip_comments(read("gangw.html"))
 
 news_html = block(home, "<h3>NEWS</h3>", "<h3>PRESS</h3>")
 press_html = block(home, "<h3>PRESS</h3>", "<h3>LINKS</h3>")
-class_html = block(home, "<h3>CLASS</h3>", "<h3>NEWS</h3>")
 
 # News and press entries are separated by a pushpin marker.
 MARKER = r'<p><img src="fonts/glyphicons-336-pushpin\.png"[^>]*>\s*'
@@ -206,6 +205,7 @@ NAV = [
     ("#students", "Students"),
     ("#activities", "Activities"),
     ("#datasets", "Datasets"),
+    ("#news-archive", "News"),
     ("#cv", "CV"),
 ]
 
@@ -217,11 +217,6 @@ LINKS = """
           <a href="https://github.com/xx3416" class="btn btn-primary btn-sm">GitHub</a>
         </p>
 """
-
-CLASS_BLOCK = """<h3>CLASS</h3>
-         <p><small>(taught at UIUC; on academic leave since June 2025)</small></p>
-         <p>%s</p>""" % re.sub(r"\s+", " ", class_html.split("</p>")[0].replace("<h3>CLASS</h3>", "")
-                             .replace("<p>", "", 1).strip())
 
 BIO = """
             <p id="about">I am a <b>Research Scientist at ByteDance</b>, currently on <b>academic leave from the
@@ -248,19 +243,6 @@ BIO = """
             <p>
             Before joining UIUC, I worked as an Assistant Professor at Virginia Tech from 2016 to 2019. I obtained my Ph.D. from UC Santa Barbara in 2016 under the supervision of Ben Y. Zhao and Heather Zheng. I received my bachelor's degree from Tsinghua University in 2010. I spent two summers at Microsoft Research Redmond in 2011 and 2014.</p>
 """
-
-SPONSORS = """<h3>SPONSORS</h3>
-            <p class="sponsor-logos">
-              <img src="image/nsf1.jpg" width="100" alt="NSF" /><br>
-              <img src="image/google.jpg" width="120" alt="Google" /><br>
-              <img src="image/amazon.jpg" width="120" alt="Amazon" /><br>
-              <img src="image/ibm.png" width="100" alt="IBM" /><br>
-              <img src="image/jump-logo.png" width="120" alt="Jump" /><br>
-              <img src="image/nih.png" width="80" alt="NIH" /><br>
-              <img src="image/massaitc.jpeg" width="100" alt="MIT CSAIL" /><br>
-              <img src="image/ebay-logo.png" width="100" alt="eBay" /><br>
-              <img src="image/Capital-One.png" width="140" alt="Capital One" />
-            </p>"""
 
 PUBLICATIONS = []
 for year, items in pub_groups:
@@ -333,26 +315,7 @@ PAGE = """<!DOCTYPE html>
           <div class="bs-component">
             <h3>CONTACT</h3>
             <p><b>ByteDance</b> &mdash; Research<br>
-                   <span class="muted-note">On academic leave from UIUC since June 2025</span><br><br>
-                   Office: Thomas M. Siebel Center<br>
-                   201 North Goodwin Avenue<br>
-                   MC 258, Room 4316<br>
-                   Urbana, IL 61801-2302<br><br>
-                   Phone: 217-244-1008</p>
-%s
-          </div>
-
-          <div class="bs-component">
-%s
-          </div>
-
-          <div class="bs-component">
-            <h3>NEWS</h3>
-%s
-            <p class="small"><a href="#news-archive">(Archived news)</a></p>
-          </div>
-
-          <div class="bs-component">
+                   <span class="muted-note">On academic leave from UIUC since June 2025</span></p>
 %s
           </div>
         </div>
@@ -431,24 +394,20 @@ PAGE = """<!DOCTYPE html>
 PAGE = PAGE % (
     "\n".join('          <li><a href="%s">%s</a></li>' % (href, label) for href, label in NAV),
     LINKS,
-    CLASS_BLOCK,
-    news_block(news_items[:12]),
-    SPONSORS,
     BIO,
     "\n".join(PUBLICATIONS),
     PRESS_BLOCK,
     STUDENTS_BLOCK,
     ACTIVITY_BLOCK,
     DATA_BLOCK,
-    news_block(news_items[12:]),
+    news_block(news_items),
 )
 
 with io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
     fh.write(PAGE)
 
 print("index.html written: %d bytes" % len(PAGE.encode("utf-8")))
-print("  news      : %d (%d sidebar / %d archive)" % (
-    len(news_items), min(12, len(news_items)), max(0, len(news_items) - 12)))
+print("  news      : %d (all in the archived-news section)" % len(news_items))
 print("  press     : %d" % len(press_items))
 print("  pubs      : %d year groups, %d entries" % (
     len(pub_groups), sum(len(i) for _, i in pub_groups)))
