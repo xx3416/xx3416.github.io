@@ -1,0 +1,152 @@
+/* Site-specific styles layered on top of the Bootstrap 3.3.4 + non-responsive
+   stylesheet used by the reference layout (gangw.cs.illinois.edu).
+   The rules here mirror the inline <style> block of the reference page and
+   add a few affordances needed by the single-page version. */
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.border-right {
+  border-right: 1px solid #ddd;
+}
+
+.border-left {
+  border-left: 1px solid #ddd;
+}
+
+.borders {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  margin: -1px;
+}
+
+/* Fixed navbar + in-page anchors: keep headings clear of the navbar. */
+section,
+#about,
+#publications,
+#press,
+#students,
+#activities,
+#datasets,
+#news-archive,
+#cv,
+#links {
+  scroll-margin-top: 75px;
+}
+
+/* Wordmark substitute for the university logo in the reference navbar. */
+.affiliation {
+  display: inline-block;
+  color: #fff;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  line-height: 15px;
+  opacity: 0.92;
+}
+
+.navbar-brand + .navbar-brand {
+  margin-left: 6px;
+}
+
+.navbar-brand {
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+/* Neutral portrait placeholder. */
+.avatar {
+  border-radius: 4px;
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+/* Sidebar blocks. */
+.bs-component {
+  margin-bottom: 22px;
+}
+
+.bs-component h3 {
+  margin-top: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #ddd;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #555;
+}
+
+.muted-note {
+  color: #777;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.news-item {
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 0 0 12px 0;
+  padding-left: 2px;
+}
+
+.news-item img {
+  margin-right: 4px;
+}
+
+.sponsor-logos img {
+  margin-bottom: 4px;
+}
+
+/* Publication list. */
+#publications ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#publications li {
+  margin-bottom: 14px;
+  padding-left: 14px;
+  border-left: 2px solid #eee;
+  line-height: 1.45;
+}
+
+.pub-year {
+  color: #c0392b;
+  font-weight: 700;
+  margin-top: 18px;
+}
+
+/* Section spacing in the main column. */
+#publications,
+#press,
+#students,
+#activities,
+#datasets,
+#news-archive,
+#cv,
+#links {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+#publications {
+  border-top: none;
+}
+
+/* Footer. */
+.site-footer {
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+  padding: 18px 0 0 0;
+}
+
+.site-footer p {
+  font-size: 12px;
+}
