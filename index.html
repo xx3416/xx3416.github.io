@@ -20,8 +20,8 @@
 
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#home"><center><font color="white">Gang Wang</font></center></a>
-      <a class="navbar-brand" href="#home"><center><span class="affiliation">ByteDance</span></center></a>
+      <a class="navbar-brand" href="#home">Gang Wang</a>
+      <a class="navbar-brand affiliation-brand" href="#home"><span class="affiliation">ByteDance</span></a>
 
       <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false">
         <span class="icon-bar"></span>
@@ -32,46 +32,31 @@
       <div class="navbar-collapse collapse" id="navbar-main">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#publications">Publications</a></li>
           <li><a href="#press">Press</a></li>
           <li><a href="#students">Students</a></li>
           <li><a href="#activities">Activities</a></li>
           <li><a href="#datasets">Datasets</a></li>
           <li><a href="#news-archive">News</a></li>
-          <li><a href="#cv">CV</a></li>
         </ul>
       </div>
     </div>
   </div>
 
-  <div class="container">
-    <div class="bs-docs-section">
-      <div class="row">
+  <div class="container page-wrap">
 
-        <!-- ============================= SIDEBAR ============================= -->
-        <div class="col-xs-3">
-          <div class="bs-component">
-            <a href="image/avatar.svg"><img class="avatar" src="image/avatar.svg" width="200" height="200" alt="Gang Wang" /></a>
-          </div>
+    <header class="profile-header">
+      <img class="avatar-lg" src="image/avatar.svg" alt="Gang Wang" />
+      <div class="profile-text">
+        <h1>Gang Wang</h1>
+        <p class="profile-role">Research Scientist &middot; ByteDance</p>
+        <p class="profile-note">On academic leave from the University of Illinois Urbana-Champaign since June 2025</p>
+      </div>
+    </header>
 
-          <div class="bs-component">
-            <h3>CONTACT</h3>
-            <p><b>ByteDance</b> &mdash; Research<br>
-                   <span class="muted-note">On academic leave from UIUC since June 2025</span></p>
-
-        <p>
-          <a href="https://scholar.google.com/citations?user=-DfTtxgAAAAJ" class="btn btn-primary btn-sm">Google Scholar</a>
-          <a href="https://dblp.uni-trier.de/pers/hd/w/Wang_0011:Gang" class="btn btn-primary btn-sm">DBLP</a>
-          <a href="https://twitter.com/ffmagicbean" class="btn btn-primary btn-sm">Twitter</a>
-          <a href="https://github.com/xx3416" class="btn btn-primary btn-sm">GitHub</a>
-        </p>
-
-          </div>
-        </div>
-
-        <!-- ============================== MAIN ============================== -->
-        <div class="col-xs-9 border-left">
-          <div class="bs-component">
+    <section id="about" class="page-section">
+      <h2>About</h2>
 
             <p id="about">I am a <b>Research Scientist at ByteDance</b>, currently on <b>academic leave from the
             University of Illinois Urbana-Champaign (UIUC) since June 2025</b>. Before that, I was an
@@ -97,16 +82,16 @@
             <p>
             Before joining UIUC, I worked as an Assistant Professor at Virginia Tech from 2016 to 2019. I obtained my Ph.D. from UC Santa Barbara in 2016 under the supervision of Ben Y. Zhao and Heather Zheng. I received my bachelor's degree from Tsinghua University in 2010. I spent two summers at Microsoft Research Redmond in 2011 and 2014.</p>
 
-          </div>
+    </section>
 
-          <div class="bs-component" id="publications">
-            <h3>Publications</h3>
-            <p class="text-muted"><small>The documents listed below have been provided by the contributing authors as a means to ensure timely dissemination of scholarly and technical work on a noncommercial basis. Copyright and all rights therein are maintained by the authors or by other copyright holders.</small></p>
-            <p class="text-muted"><small>
-              <span class="label label-success">C</span> Conference Proceeding |
-              <span class="label label-danger">J</span> Journal Article |
-              <span class="label label-default">W</span> Workshop Proceeding
-            </small></p>
+    <section id="publications" class="page-section">
+      <h2>Publications</h2>
+      <p class="text-muted"><small>The documents listed below have been provided by the contributing authors as a means to ensure timely dissemination of scholarly and technical work on a noncommercial basis. Copyright and all rights therein are maintained by the authors or by other copyright holders.</small></p>
+      <p class="text-muted"><small>
+        <span class="label label-success">C</span> Conference Proceeding |
+        <span class="label label-danger">J</span> Journal Article |
+        <span class="label label-default">W</span> Workshop Proceeding
+      </small></p>
 <h4 class="pub-year">2027</h4>
             <ul>
               <li><p><strong>Words Speak Louder Than Code: Investigating Cognitive Heuristics in LLM-Based Code Vulnerability Detection</strong></p><br /> Asif Shahriar, Hongyu Cai, Hadjer Benkraouda, Gang Wang, Z. Berkay Celik<br /> Proceedings of <em>The 48th IEEE Symposium on Security and Privacy (<strong>IEEE SP</strong>)</em> <br /> San Francisco, CA, May 2027. <span class="label label-success">C</span> </li>
@@ -319,10 +304,10 @@
               <li><p><strong>Photo-based Vendor Re-identification on Darknet Marketplaces using Deep Neural Networks</strong> </p><br \> <em>MS Thesis, Xiangwen Wang, Virginia Tech, May 2018.</em> </li>
               <li><p> <strong>Combating Attacks and Abuse in Large Online Communities</strong> </p><br \> <em>PhD Dissertation, Gang Wang, UC Santa Barbara, September 2016.</em> </li>
             </ul>
-          </div>
+    </section>
 
-          <div class="bs-component" id="press">
-            <h3>Press</h3>
+    <section id="press" class="page-section">
+      <h2>Press</h2>
             <p><strong>2 Apr. 2020:</strong><br> Interview with <b>Vox</b> on coronavirus scam and email phishing: <a href="https://www.vox.com/recode/2020/4/2/21202852/coronavirus-scam-email-who-spoofing-domain-dmarc">article</a>; <a href="https://www.youtube.com/watch?v=_CrbHvbvvMw">video</a>.</p>
             <p><strong>Recent press coverage on our GPS spoofing project</strong><br> <A HREF="https://www.forbes.com/sites/thomasbrewster/2018/07/12/google-maps-gps-hack-takes-victims-to-ghost-locations/#68a045016335">Forbes</a>, <A HREF="https://www.wsj.com/articles/how-to-defend-against-gps-spoofing-attacks-1537306495">The Wall Street Journal</a> <A HREF="https://cacm.acm.org/news/229669-researchers-mount-successful-gps-spoofing-attack-against-road-navigation-systems/fulltext">ACM TechNews</a>, <A HREF="https://thecyberwire.com/podcasts/cw-podcasts-rs-2018-10-13.html">The Cyberwire podcast</a>, <A HREF="https://www.theregister.co.uk/2018/07/16/researchers_hack_gps/">The Register</a>, <A HREF="https://nakedsecurity.sophos.com/2018/07/17/how-to-spoof-someones-gps-navigation-to-send-them-the-wrong-way/">Naked Security</a>, <A HREF="https://www.bleepingcomputer.com/news/security/researchers-mount-successful-gps-spoofing-attack-against-road-navigation-systems/">BleepingComputer</a>, <A HREF="https://blog.hackster.io/gps-spoofing-and-ghost-maps-could-be-used-to-lead-you-astray-a4681e8579e4?gi=8a58d62cbfda">Hackster</a>, and <a href="#press">more</a>.</p>
             <p><strong>Recent press coverage on our spear phishing project</strong><br> <A HREF="https://technews.acm.org/#1001519">ACM TechNews</a>, <A HREF="https://www.sciencedaily.com/releases/2018/06/180611133443.htm">Science Daily</a>, <A HREF="https://vtnews.vt.edu/articles/2018/06/phishingattacks.html">VT News</a>, <A HREF="http://www.digitaljournal.com/business/why-businesses-need-extra-vigilance-to-combat-phishing-attacks/article/524930">Digital Journal</a>, <A HREF="https://thecyberwire.com/podcasts/cw-podcasts-rs-2018-07-21.html">The Cyberwire</a>, <A HREF="https://www.tun.com/blog/email-users-subject-to-phishing-attacks/">The University Network</a>, and <a href="#press">more</a>.</p>
@@ -334,10 +319,10 @@
             <p>Interview with <a href="http://wvtf.org/post/internet-scams-hacks-and-malware-cat-mouse-game#stream/0">WVTF Radio NPR</a> on scam, fake content and more</p>
             <p><strong>Press coverage on our Waze/Sybil device project</strong><br> Fusion <A HREF="http://fusion.net/story/293157/waze-hack/">(1</a>, <A HREF="http://fusion.net/story/296771/waze-comes-up-with-a-fix-for-hack-that-let-researchers-track-users-movements/">2</a>), <A HREF="http://www.wtsp.com/news/local/hackers-can-stalk-you-via-waze-app/156935996">CBS News</a>, <A HREF="http://recode.net/2016/04/27/googles-waze-denies-hack-app/">Recode/CNBC</a>, <A HREF="http://www.telegraph.co.uk/technology/2016/04/27/flaw-in-google-maps-app-waze-lets-hackers-track-reporter-for-day/">The Telegraph</a>, <A HREF="http://www.timesofisrael.com/security-breach-in-israeli-made-waze-lets-hackers-stalk-users/">Times of Israel</a>, <A HREF="http://www.i24news.tv/en/news/technology/111241-160427-us-researchers-expose-waze-security-lapse-that-allows-hackers-to-track-users">i24 News</a>, <A HREF="http://techcrunch.com/2016/04/28/waze-downplays-exploit-that-let-researchers-track-users/">TechCrunch</a>, <A HREF="http://www.pcmag.com/news/344152/waze-blocks-bug-cracks-down-on-ghost-riders">PC Magazine</a>, and many <a href="#press">more</a>.</p>
             <p><strong>Press coverage on Crowdturfing</strong><br> <A HREF="http://www.technologyreview.com/news/528506/fake-followers-for-hire-and-how-to-spot-them/">MIT Tech Review</a>, <A HREF="http://www.bostonglobe.com/opinion/2012/01/08/dark-force-unleashed-online/Nz7ONOck4ycJaikZuOmm9O/story.html">Boston Globe</a>, <A HREF="http://tech.slashdot.org/story/11/12/13/0217222/million-dollar-crowdturfing-industry-dupes-social-networks">SlashDot</a>, <A HREF="http://www.technologyreview.com/computing/39304/">MIT Technology Review</a>, <A HREF="http://consumerist.com/2011/12/growing-number-of-cyber-shills-invade-online-reviews.html">Consumerist</a>, <A HREF="http://www.infoworld.com/t/identity-management/cyber-shill-business-booming-181610">InfoWorld</a></p>
-          </div>
+    </section>
 
-          <div class="bs-component" id="students">
-            <h3>Students</h3>
+    <section id="students" class="page-section">
+      <h2>Students</h2>
 <h5><strong>PhD Students</strong></h5> <UL> <LI><a href="https://jeffz0930.github.io/">Haoyu (Jeffrey) Zhai</a>, UIUC (2024 – Present)</LI> <LI><a href="https://nirav0999.github.io/">Nirav Diwan</a>, UIUC (2024 – Present)</LI> <LI><a href="https://pnaghavi.github.io/">Pirouz Naghavi</a>, UIUC (2024 – Present)</LI> <LI><a href="https://nicholas.wang/">Nicholas Wang</a>, UIUC (2023 – Present)</LI> <LI><A HREF="https://avirkud.github.io/">Apurva Virkud</a>, UIUC (2022 – Present, co-advised with Adam Bates)</LI> <LI><A HREF="https://hbenkraouda.web.illinois.edu/">Hadjer Benkraouda</a>, UIUC (2021 – 2026) &#8594; Postdoc at Purdue</LI> <LI><A HREF="https://zhichen98.github.io/">Zhi Chen</a>, UIUC (2020 – 2026) &#8594; Postdoc at NTU Singapore</LI> <LI><A HREF="https://mruffin.github.io/">Margie Ruffin</a>, UIUC (2020 – 2025, co-advised with Kirill Levchenko) &#8594; Assistant Professor at Spelman College</LI> <LI><A HREF="https://qingyinghao.web.illinois.edu/">Qingying Hao</a>, UIUC (2018 – 2025) &#8594; Assistant Professor at ShanghaiTech</LI> <LI><A HREF="https://jaronm.ink/">Jaron Mink</a>, UIUC (2019 – 2024) &#8594; Assistant Professor at ASU</LI> <LI><A HREF="https://scholar.google.com/citations?hl=en&user=FCNYLcUAAAAJ">Limin Yang</a>, UIUC (2018 – 2023) &#8594; ByteDance &#8594; Microsoft </LI> <LI><A HREF="https://stevetkjan.github.io/">Steve T.K. Jan</a>, VT (2014 – 2020) &#8594; ByteDance &#8594; LinkedIn</LI> <LI><A HREF="https://scholar.google.com/citations?user=JzWWU2UAAAAJ&hl=en">Hang Hu</a>, VT (2016 – 2020) &#8594; Google &#8594; Meta</LI> </UL>
 <h5><strong>MS Students</strong></h5> <UL> <LI>Gaurish Lakhanpal, UIUC (2026 – Present)</LI> <LI>Ethan Ng, UIUC (2026 – Present)</LI> <LI>Shuo Wang, UIUC (2026 – Present)</LI> <LI><a href="https://jeffz0930.github.io/">Haoyu (Jeffrey) Zhai</a>, UIUC (2024 – 2026) &#8594; UIUC Ph.D.</LI> <LI><a href="https://www.linkedin.com/in/anusha-ghosh">Anusha Ghosh</a>, UIUC (2023 – 2025) &#8594; Nvidia</LI> <LI><a href="https://nirav0999.github.io/">Nirav Diwan</a>, UIUC (2022 – 2024) &#8594; UIUC Ph.D.</LI> <LI><a href="https://github.com/Zhang-Zhenning">Zhenning Zhang</a>, UIUC (2022 – 2024) &#8594; Microsoft</LI> <LI><a href="https://nicholas.wang/">Nicholas Wang</a>, UIUC (2021 – 2023) &#8594; UIUC Ph.D. </LI> <LI><a href="https://lectronic.dev/">Licheng Luo</a>, UIUC (2020 – 2022) &#8594; Jump Trading</LI> <LI><a href="https://www.linkedin.com/in/rishabh-chhabra">Rishabh Chhabra</a>, UIUC (2020 – 2021) &#8594; Amazon</LI> <LI><a href="https://hutr.info/">Tianrui Hu</a>, VT (2018 – 2020) &#8594; PhD at Northeastern</LI> <LI><A HREF="https://bournexu.github.io/">Chao Xu</a>, VT (2018 – 2020) &#8594; ByteDance </LI> <LI><a href="https://www.linkedin.com/in/jwang0815/">Jiamin Wang</a>, VT (2018 – 2020) &#8594; TSMC Technology</LI> <LI><A HREF="https://scholar.google.com/citations?user=dHPRinsAAAAJ&hl=en">Peng Peng</a>, VT (2017 – 2019) &#8594; Palo Alto Networks</LI> <LI><A HREF="https://scholar.google.com/citations?user=vSVZfscAAAAJ&hl=en">Xiangwen Wang</a>, VT (2017 – 2019) &#8594; Google </LI> <LI><A HREF="https://scholar.google.ae/citations?user=lxRszyIyJMgC&hl=en">Chun Wang</a>, VT (2016 – 2018) &#8594; IBM</LI> </UL>
 <h5><strong>Undergraduate Students</strong></h5> <UL> <LI>Yizhu Wang, Tsinghua (2024 – Present)</LI> <LI>Sophia Liu, UIUC (2024 – 2026) &#8594; Databricks</LI> <LI>Jennifer Xia, UIUC (2025 - 2026) &#8594; Undergrad at UIUC</LI> <LI>Simone Schwaighart, UIUC (2024 – 2025) &#8594; Undergrad at UIUC</LI> <LI> Khushi Patel, UIUC (2024 – 2026) &#8594; Undergrad at UIUC</LI> <LI> Samika Karumuri, UIUC (2024 – 2026) &#8594; Undergrad at UIUC</LI> <LI>Shuo Wang, UIUC (2023 – 2025) &#8594; MS at UIUC</LI> <LI>Mutma Adebayo, UIUC (2022 – 2024) &#8594; MS at UIUC</LI> <LI>Jeffrey Zhai, UIUC (2023 – 2024) &#8594; MS at UIUC</LI> <LI>Sushruth Booma, UIUC (2022 – 2024) &#8594; MS at UT Austin</LI> <LI>Ezra Goodwin, UIUC (2023 – 2024) &#8594; Undergrad at UIUC</LI> <LI>Zhuofan Jia, UIUC (2022 – 2023) &#8594; Ph.D. at Duke</LI> <LI>Kevin Tu, UIUC (2021 – 2022) &#8594; Underg. at UIUC</LI> <LI>JT Kirages, UIUC (2021 – 2022) &#8594; MCS at UIUC</LI> <LI>Saidivya Ashok, UIUC (2020 – Present) &#8594; MS at CMU</LI> <LI>Zhengdai Hu, UIUC (2020 – 2021) &#8594; Google </LI> <LI>Nicholas Wang, UIUC (2020 – Present) &#8594; MS at UIUC </LI> <LI>Olivia Figueira, Santa Clara University, undergraduate intern (2020 – 2021) &#8594; PhD at UC Irvine </LI> <LI>Shihan Lin, Fudan, undergraduate intern (2018 - 2019) &#8594; PhD at Duke</LI> <LI>Shinan Liu, UESTC, undergraduate intern (2017 - 2019) &#8594; PhD at UChicago </LI> <LI>Luke Quinn, VT (2018 – 2019) &#8594; MITRE</LI> <LI>Douglas Bossart, VT (2017 – 2019) &#8594; U.S. Army ERDC</LI> </UL>
@@ -346,20 +331,20 @@
 <h5><strong>Q: What are you looking for in prospective students? </strong> </h5> <p>I am always looking for students to join my research group. As a PhD student, self-motivation is important --- you are expected to lead one or more projects (e.g., after 1-2 years) and proactively drive the research agenda. I also like students who are energetic and curious, which are critical qualities to identify important research problems and find new solutions. Regarding technical skills, I expect students to be competent programmers. In addition, my research area involves extensive data analytics. I expect students to have basic knowledge of statistcs. </p>
 <h5><strong>Q: What should I do if I want to work with you? </strong> </h5> <p>The best thing to do is to read several of our <a href="#publications">recent papers</a>, and email your CV to introduce yourself. Please understand that we receive a lot of emails from prospective students, and we may not be able to respond to inquiries that do not exhibit a clear match.</p> <p>My primary research area is security and privacy in networks and systems. I am also interested in data mining and machine learning. If you are not interested in any of those areas, then I am not the right advisor for you. If you haven't been admitted to UIUC, I suggest you going through the application process first. You can mark my name in your application so that I can easily find your case. </p> <p><b>Important Note:</b> for international students, please pay attention to the TOEFL test requirement <a href="https://cs.illinois.edu/admissions/graduate/applications-process-requirements/additional-required-application-materials">here</a> (see the "Financial Aid" section). </p>
 <h5><strong>Q: I am a Masters/Undergraduate student at UIUC, can I join your research projects? </strong> </h5> <p>Absolutely! I enjoy working with masters/Undergraduate students who are interested in doing research. If you are already enrolled in UIUC, you can email your CV and tell me about your interests. Another way is to take my class. Students who excel in class and actively participate have the best chance to join my lab to work on real research projects. </p> <div class="page-header"> <h4>Advice for My Students</h4> </div> <UL> <LI><a href="https://gangw.cs.illinois.edu/nick-advisor.pdf">Managing Your Advisor</a> and <a href="https://greatresearch.org/">How to do great research</a></LI> <LI><a href="http://www.usenix.org/events/samples/submit/advice.html">How (and How Not) to Write a Good Systems Paper</a></LI> <LI><a href="http://matt-welsh.blogspot.com/2016/04/why-i-gave-your-paper-strong-reject.html?m=1">How to Write Bad Papers</a><a></LI> <LI></a><a href="https://www.cs.ucsb.edu/~ravenben/cargocult.html">Cargo Cult Science</a> by Richard Feynman</LI> <LI><a href="http://www.cs.ucsb.edu/~ravenben/ucsb/courage-IS.pdf">Technology and Courage</a>, by Ivan Sutherland</LI> <LI><a href="http://www.cs.indiana.edu/how.2b/how.2b.html">How to be a good graduate student</a></LI> <LI>Rugaber on <A HREF="http://www.cc.gatech.edu/fac/Spencer.Rugaber/txt/teaching.htm">teaching</a>, <A HREF="http://www.cc.gatech.edu/fac/Spencer.Rugaber/txt/thesis.html">dissertations</a>, and <A HREF="http://www.cc.gatech.edu/fac/Spencer.Rugaber/txt/research_paper.txt">reading papers</a></LI> <LI>Useful <A HREF="http://stearnslab.yale.edu/some-modest-advice-graduate-students">advice</a> for PhD students</LI> <LI>Donald Knuth's <A HREF="http://www.cs.ucsb.edu/~ravenben/bits/knuth.pdf">All Questions Answered</a></LI> <LI> <a href="http://www.cs.berkeley.edu/~pattrsn/talks/nontech.html ">Non-Technical Talks</a> by David Patterson</LI> <LI> <a href="http://www.ccs.neu.edu/home/cbw/gnuplot.html">Gnuplot Tips</a> by Christo Wilson</LI> <LI> <a href="https://gangw.cs.illinois.edu/latex.pdf">Latex Tips</a> by Jia-Bin Huang</LI> <LI><a href="https://gangw.cs.illinois.edu/Wobbrock-2015.pdf">How to Write a Good HCI Paper</a></LI> </UL>     <div class="page-header"> </div> <footer> <div class="row"> <div class="col-lg-12"> <p class="text-muted">Copyright © <em>Gang Wang 2020</em> · css design: Thomas Park</p> </div> </div> </footer>  <script src="css/jquery-1.10.2.min.js"></script> <script src="css/bootstrap.min.js"></script>
-          </div>
+    </section>
 
-          <div class="bs-component" id="activities">
-            <h3>Professional Activities</h3>
+    <section id="activities" class="page-section">
+      <h2>Professional Activities</h2>
 <h5>Technical Program Committee</h5> <ul> <li> <strong>[USENIX Security]</strong> USENIX Security Symposium, 2018, 2021, 2022, 2023, 2024 </li> <li> <strong>[IEEE SP]</strong> IEEE Symposium on Security and Privacy, 2022, 2023, 2024, 2025 </li> <li> <strong>[CCS]</strong> The ACM Conference on Computer and Communications Security, 2021, 2022, 2023, 2024 </li> <li> <strong>[NDSS]</strong> The Network and Distributed System Security Symposium, 2020, 2021, 2022, 2023, 2024 </li> <li> <strong>[SatML]</strong> IEEE Conference on Secure and Trustworthy Machine Learning, 2026, 2027 </li> <li> <strong>[IMC]</strong> ACM Internet Measurement Conference, 2019, 2024 </li> <li> <strong>[EuroS&P]</strong> IEEE European Symposium on Security and Privacy, 2024 </li> <li> <strong>[TheWebConf]</strong> The Web Conference (formerly known as WWW), 2017, 2019, 2020, 2021, 2022, 2024 </li> <li> <strong>[MobiSys]</strong> ACM International Conference on Mobile Systems, Applications, and Services, 2020, 2021, 2023 </li> <li> <strong>[AIDC]</strong> Workshop on Agentic AI in Offensive and Defensive Cyber Operations, 2026 </li> <li> <strong>[HealthSec]</strong> ACSAC Workshop on Cybersecurity in Healthcare, 2025, 2026 </li> <li> <strong>[EthiCS]</strong> International Workshop on Ethics in Computer Security: 2023 </li> <li> <strong>[RAID]</strong> International Symposium on Research in Attacks, Intrusions and Defenses, 2021, 2022 </li> <li> <strong>[DIMVA]</strong> Conference on Detection of Intrusions and Malware and Vulnerability Assessment, 2021, 2022 </li> <li> <strong>[HotSoS]</strong> Hot Topics in the Science of Security Symposium, 2025 </li> <li> <strong>[SafeThings]</strong> IEEE/ACM Workshop on the Internet of Safe Things, 2023 </li> <li> <strong>[DLS]</strong> Deep Learning and Security Workshop, 2021 </li> <li> <strong>[WiSec]</strong> ACM Conference on Security and Privacy in Wireless and Mobile Networks, 2021 </li> <li> <strong>[DSN]</strong> IEEE/IFIP International Conference on Dependable Systems and Networks, 2020 </li> <li> <strong>[ACSAC]</strong> Annual Computer Security Applications Conference, 2018, 2019, 2020, 2021, 2023 </li> <li> <strong>[CNS] </strong> IEEE Conference on Communications and Network Security, 2019 </li> <li> <strong>[ICWSM]</strong> AAAI International Conference on Web and Social Media, 2016, 2017, 2018, 2019 </li> <li> <strong>[eCrime]</strong> APWG Annual Symposium on Electronic Crime Research, 2018, 2019, 2020 </li> <li> <strong>[ICICS]</strong> International Conference on Information and Communications Security, 2021 </li> <li> <strong>[AISec]</strong> ACM Workshop on Artificial Intelligence and Security (collocated with CCS), 2016, 2017, 2018, 2019, 2020, 2021 </li> <li> <strong>[MLBA]</strong> IJCAI Workshop on Machine Learning for Binary Analysis, 2020 </li> <li> <strong>[WACCO]</strong> Workshop on Attackers and Cyber-Crime Operations (collocated with IEEE EuroS&P), 2019, 2020, 2021 </li> <li> <strong>[CSCW]</strong> ACM Conference on Computer-Supported Cooperative Work and Social Computing, 2018 </li> <li> <strong>[LocalRec]</strong> ACM SIGSPATIAL Workshop on Recommendations for Location-based Services and Social Networks, 2017, 2018 </li> <li> <strong>[Oakland]</strong> IEEE Symposium on Security and Privacy (Student PC), 2016 </li> </ul>
 <h5>Journal Guest Editor</h5> <ul> <li> <strong>[WWWJ]</strong> World Wide Web, Special issue on "Social computing and big data applications", 2017-Present </li> </ul>
 <h5>Conference/Workshop Organization</h5> <ul> <li> <strong>[SatML]</strong> IEEE Conference on Secure and Trustworthy Machine Learning: Area Chair, 2027 </li> <li> <strong>[USENIX Security]</strong> USENIX Security Symposium: Vice Chair, 2026 </li> <li> <strong>[CCS]</strong> The ACM Conference on Computer and Communications Security: Workshops Co-Chair: 2025 </li> <li> <strong>[IEEE SP]</strong> IEEE Symposium on Security and Privacy: Workshops Co-Chair: 2024, 2025 </li> <li> <strong>[MobiSys]</strong> ACM International Conference on Mobile Systems, Applications, and Services: Travel Grant Chair: 2023 </li> <li> <strong>[KDD MLHat]</strong> The First International Workshop on Deployable Machine Learning for Security Defense: General Chair: 2020, 2021, 2022 </li> </ul>
 <h5>Journal Reviewer</h5> <ul> <li> <strong>[SP]</strong> IEEE Security & Privacy, 2018, 2019, 2022, 2026 </li> <li> <strong>[IMWUT]</strong> The Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies, 2021 </li> <li> <strong>[TIFS]</strong> Transactions on Information Forensics & Security, 2018 </li> <li> <strong>[TWEB]</strong> ACM Transactions on the Web, 2017, 2018 </li> <li> <strong>[TMC]</strong> Transactions on Mobile Computing, 2017 </li> <li> <strong>[IEEE Communications]</strong> IEEE Communications Magazine, 2017 </li> <li> <strong>[TDSC]</strong> IEEE Transactions on Dependable and Secure Computing, 2016, 2017, 2018, 2019, 2022 </li> <li> <strong>[PLOS ONE]</strong> Public Library of Science Open Access Journal, 2017 </li> <li> <strong>[TOIT]</strong> ACM Transactions on Internet Technology, 2017 </li> <li> <strong>[Science Advances]</strong> AAAS Open Access Journal, 2017 </li> <li> <strong>[JASIST]</strong> Journal of the Association for Information Science and Technology, 2016 </li> <li> <strong>[TIST]</strong> ACM Transactions on Intelligent Systems and Technology, 2015 </li> <li> <strong>[TWireless]</strong> IEEE Transactions on Wireless Communications, 2015 </li> <li> <strong>[COMNET]</strong> Elsevier Journal on Computer Networks, special issue on P2P Network Measurement, 2011 </li> </ul>
 <h5>External Reviewer</h5> <ul> <li> <strong>[CSCW]</strong> ACM Conference on Computer-Supported Cooperative Work and Social Computing, 2017, 2018 </li> <li> <strong>[CHI]</strong> ACM/SIGCHI Conference on Human Factors in Computing Systems, 2016, 2017 </li> <li> <strong>[HotCloud]</strong> USENIX Workshop on Hot Topics in Cloud Computing, 2016 </li> <li> <strong>[WWW]</strong> The International World Wide Web Conference, 2014, 2015 </li> <li> <strong>[IMC]</strong> ACM SIGCOMM Internet Measurement Conference, 2013, 2015 </li> <li> <strong>[COSN]</strong> ACM Conference on Online Social Networks, 2013, 2015 </li> <li> <strong>[NSDI]</strong> ACM/USENIX Symposium on Networked Systems, Design and Implementation, 2014 </li> </ul>
 <h5>Other Services</h5> <ul> <li> <strong>[NSF]</strong> National Science Foundation (NSF) review panel, 2018, 2019, 2021, 2022, 2023, 2025 </li> </ul>     <div class="page-header"> </div> <footer> <div class="row"> <div class="col-lg-12"> <p class="text-muted">Copyright © <em>Gang Wang 2020</em> · css design: Thomas Park</p> </div> </div> </footer>  <script src="css/jquery-1.10.2.min.js"></script> <script src="css/bootstrap.min.js"></script>
-          </div>
+    </section>
 
-          <div class="bs-component" id="datasets">
-            <h3>Datasets &amp; Tools</h3>
+    <section id="datasets" class="page-section">
+      <h2>Datasets &amp; Tools</h2>
 <h5><b>BODMAS Malware Dataset</b></h5> <p>BODMAS is short for Blue Hexagon Open Dataset for Malware AnalysiS. We collaborate with Blue Hexagon to release a dataset containing timestamped malware samples and well-curated family information: 57,293 malware samples and 77,142 benign samples collected from 2019 to 2020 (581 families). <a href="https://whyisyoung.github.io/BODMAS/">Download Link</a>. Related paper: <a href="https://gangw.cs.illinois.edu/DLS21_BODMAS.pdf">[DLS'21]</a>. </p> <h2></h2>
 <h5><b>DoH Measurement</b></h5> <p>We open-source the code for running DNS-over-HTTPS (DoH) performance measurements (resolution time) using the BrightData network. We also share the dataset collected in 2021. <a href="https://github.com/rishabhc/imc21-measuring-doh-performance">Download Link</a>. Related paper: <a href="https://gangw.cs.illinois.edu/imc2021-p297-paper.pdf">[IMC'21]</a>. </p> <h2></h2>
 <h5><b>Adversarial Attack against Perceptual Hashing</b></h5> <p>We open-source the attack algorithms and the dataset used for attacking perceptual hashing based image reverse search. <a href="https://gangw.cs.illinois.edu/hash.html">Project Page</a>. Related paper: <a href="https://gangw.cs.illinois.edu/PHashing.pdf">[CCS'21]</a>. </p> <h2></h2>
@@ -377,10 +362,10 @@
 <h5><b>Social Livestream Datasets</b></h5> <p>Datasets collected from a social livestreaming service (Twitter's Periscope) in 2015. The dataset contains This dataset contains 13,894,852 broadcasts and in total 416,207,256 comments, 6,101,042,415 hearts and other detailed interaction metadata. Please check out the <a href="http://sandlab.cs.uchicago.edu/periscope/">[Project Website]</a> for the dataset details. The related paper is: <a href="https://gangw.cs.illinois.edu/imc16.pdf">[IMC'16]</a>.</p> <h2></h2>
 <h5><b>Clickstream User Behavior Model</b></h5> <p>In this project, we build an unsupervised system to capture dominating user behaviors from clickstream data (traces of users' click events), and visualize the detected behaviors in an intuitive manner. The system identifies "clusters" of similar users by partitioning a similarity graph (nodes are users; edges are weighted by clickstream similarity). The partitioning process leverages iterative feature pruning to capture the natural hierarchy within user clusters and produce intuitive features for visualizing and understanding captured user behaviors. The code and sample data are available at the <a href="http://cs.ucsb.edu/~xyzhang/clickstream/index.html">[Project Website]</a>. Related papers are: <a href="https://gangw.cs.illinois.edu/click_ch16.pdf">[CHI'16]</a>, <a href="https://gangw.cs.illinois.edu/clickstream-tweb.pdf">[TWEB'17]</a>, <a href="https://gangw.cs.illinois.edu/clickstream-usenix13.pdf">[USENIX Security'13]</a>. </p> <h2></h2>
 <h5><b>10 Location De-anonymization Algorithms</b></h5> <p>To evaluate the performance of de-anonymization algorithms on real-world datasets, we <b>re-implemented 7 de-anonymization algorithms</b> published in the last 10 years: POIS [WWW'16], ME [AIHC'16], HIST [TIFS'16], WYCI [WOSN'14], MSQ [TON'13], HMM [IEEE SP'11], NFLX [IEEE SP'08]. We also introduced 3 new algorithms into this collection. The code and sample data is available at <a href="https://github.com/whd14/De-anonymization-of-Mobility-Trajectories"> [Github]</a>. The related paper is: <a href="https://gangw.cs.illinois.edu/ndss18.pdf">[NDSS'18]</a>. </p>     <div class="page-header"> </div> <footer> <div class="row"> <div class="col-lg-12"> <p class="text-muted">Copyright © <em>Gang Wang 2020</em> · css design: Thomas Park</p> </div> </div> </footer>  <script src="css/jquery-1.10.2.min.js"></script> <script src="css/bootstrap.min.js"></script>
-          </div>
+    </section>
 
-          <div class="bs-component" id="news-archive">
-            <h3>Archived News</h3>
+    <section id="news-archive" class="page-section">
+      <h2>News</h2>
             <p class="news-item"><img src="fonts/glyphicons-336-pushpin.png" width="10"> <strong>28 Sep 2026:</strong><br> One paper accepted to NeurIPS 2026, and one paper accepted to IEEE SP 2027. Congrats to all the students and collaborators.</p>
             <p class="news-item"><img src="fonts/glyphicons-336-pushpin.png" width="10"> <strong>29 Aug 2026:</strong><br> NSF Safe-OSE project funded!</p>
             <p class="news-item"><img src="fonts/glyphicons-336-pushpin.png" width="10"> <strong>28 Aug 2026:</strong><br> SaTML Area Chair</p>
@@ -443,25 +428,7 @@
             <p class="news-item"><img src="fonts/glyphicons-336-pushpin.png" width="10"> <strong>30 May 2022:</strong><br> Giving a keynote at <a href="https://worma.gitlab.io/2022/">WORMA 2022</a></p>
             <p class="news-item"><img src="fonts/glyphicons-336-pushpin.png" width="10"> <strong>27 May 2022:</strong><br> <a href="https://sandlab.cs.uchicago.edu/careerday/">PhD Career day</a> panel at The University of Chicago</p>
             <p class="news-item"><img src="fonts/glyphicons-336-pushpin.png" width="10"> <strong>26 May 2022:</strong><br> Security panel at <a href="https://dls2022.ieee-security.org/">DLS 2022</a>  <h4><small>(<a href="#news-archive">Archived News</a>)</small></h4></p>
-          </div>
-
-          <div class="bs-component" id="cv">
-            <h3>CV</h3>
-            <p><a href="CV.pdf" class="btn btn-primary btn-sm">Download CV (PDF)</a></p>
-          </div>
-
-          <div class="bs-component" id="links">
-            <h3>Links</h3>
-            <p>
-              <a href="https://github.com/xx3416">GitHub</a> &middot;
-              <a href="https://scholar.google.com/citations?user=-DfTtxgAAAAJ">Google Scholar</a> &middot;
-              <a href="https://dblp.uni-trier.de/pers/hd/w/Wang_0011:Gang">DBLP</a> &middot;
-              <a href="https://twitter.com/ffmagicbean">Twitter</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
 
   <footer class="site-footer">

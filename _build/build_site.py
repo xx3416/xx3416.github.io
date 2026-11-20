@@ -27,6 +27,11 @@ OUT = os.path.dirname(HERE)
 SRC = os.path.join(HERE, "src")
 REF = "https://gangw.cs.illinois.edu/"
 
+# When True, links back to the reference site (paper PDFs, datasets) are
+# rendered as plain text instead of anchors. Flip to True to remove every
+# path from this page back to gangw.cs.illinois.edu.
+STRIP_REFERENCE_LINKS = False
+
 # Reference sub-pages become in-page anchors on the single Home page.
 PAGE_MAP = {
     "news.html": "#news-archive",
@@ -129,7 +134,13 @@ def block(text, start, end, start_after=False):
 
 def clean(fragment):
     """Prepare a raw reference fragment for embedding."""
-    return rebalance(absolutize(re.sub(r"\s+", " ", fragment.strip())))
+    fragment = absolutize(re.sub(r"\s+", " ", fragment.strip()))
+    if STRIP_REFERENCE_LINKS:
+        # Unlink the papers/datasets that live on the reference site, so the
+        # page carries no path back to it.
+        fragment = re.sub(r'<a href="%s[^"]*"[^>]*>(.*?)</a>' % re.escape(REF),
+                          r'<span class="offlink">\1</span>', fragment, flags=re.S)
+    return rebalance(fragment)
 
 
 # --------------------------------------------------------------------------
@@ -200,23 +211,14 @@ data_sections = sections(data_body, r"<h5>.*?</h5>")
 # --------------------------------------------------------------------------
 NAV = [
     ("#home", "Home"),
+    ("#about", "About"),
     ("#publications", "Publications"),
     ("#press", "Press"),
     ("#students", "Students"),
     ("#activities", "Activities"),
     ("#datasets", "Datasets"),
     ("#news-archive", "News"),
-    ("#cv", "CV"),
 ]
-
-LINKS = """
-        <p>
-          <a href="https://scholar.google.com/citations?user=-DfTtxgAAAAJ" class="btn btn-primary btn-sm">Google Scholar</a>
-          <a href="https://dblp.uni-trier.de/pers/hd/w/Wang_0011:Gang" class="btn btn-primary btn-sm">DBLP</a>
-          <a href="https://twitter.com/ffmagicbean" class="btn btn-primary btn-sm">Twitter</a>
-          <a href="https://github.com/xx3416" class="btn btn-primary btn-sm">GitHub</a>
-        </p>
-"""
 
 BIO = """
             <p id="about">I am a <b>Research Scientist at ByteDance</b>, currently on <b>academic leave from the
@@ -285,8 +287,8 @@ PAGE = """<!DOCTYPE html>
 
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#home"><center><font color="white">Gang Wang</font></center></a>
-      <a class="navbar-brand" href="#home"><center><span class="affiliation">ByteDance</span></center></a>
+      <a class="navbar-brand" href="#home">Gang Wang</a>
+      <a class="navbar-brand affiliation-brand" href="#home"><span class="affiliation">ByteDance</span></a>
 
       <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false">
         <span class="icon-bar"></span>
@@ -302,83 +304,57 @@ PAGE = """<!DOCTYPE html>
     </div>
   </div>
 
-  <div class="container">
-    <div class="bs-docs-section">
-      <div class="row">
+  <div class="container page-wrap">
 
-        <!-- ============================= SIDEBAR ============================= -->
-        <div class="col-xs-3">
-          <div class="bs-component">
-            <a href="image/avatar.svg"><img class="avatar" src="image/avatar.svg" width="200" height="200" alt="Gang Wang" /></a>
-          </div>
-
-          <div class="bs-component">
-            <h3>CONTACT</h3>
-            <p><b>ByteDance</b> &mdash; Research<br>
-                   <span class="muted-note">On academic leave from UIUC since June 2025</span></p>
-%s
-          </div>
-        </div>
-
-        <!-- ============================== MAIN ============================== -->
-        <div class="col-xs-9 border-left">
-          <div class="bs-component">
-%s
-          </div>
-
-          <div class="bs-component" id="publications">
-            <h3>Publications</h3>
-            <p class="text-muted"><small>The documents listed below have been provided by the contributing authors as a means to ensure timely dissemination of scholarly and technical work on a noncommercial basis. Copyright and all rights therein are maintained by the authors or by other copyright holders.</small></p>
-            <p class="text-muted"><small>
-              <span class="label label-success">C</span> Conference Proceeding |
-              <span class="label label-danger">J</span> Journal Article |
-              <span class="label label-default">W</span> Workshop Proceeding
-            </small></p>
-%s
-          </div>
-
-          <div class="bs-component" id="press">
-            <h3>Press</h3>
-%s
-          </div>
-
-          <div class="bs-component" id="students">
-            <h3>Students</h3>
-%s
-          </div>
-
-          <div class="bs-component" id="activities">
-            <h3>Professional Activities</h3>
-%s
-          </div>
-
-          <div class="bs-component" id="datasets">
-            <h3>Datasets &amp; Tools</h3>
-%s
-          </div>
-
-          <div class="bs-component" id="news-archive">
-            <h3>Archived News</h3>
-%s
-          </div>
-
-          <div class="bs-component" id="cv">
-            <h3>CV</h3>
-            <p><a href="CV.pdf" class="btn btn-primary btn-sm">Download CV (PDF)</a></p>
-          </div>
-
-          <div class="bs-component" id="links">
-            <h3>Links</h3>
-            <p>
-              <a href="https://github.com/xx3416">GitHub</a> &middot;
-              <a href="https://scholar.google.com/citations?user=-DfTtxgAAAAJ">Google Scholar</a> &middot;
-              <a href="https://dblp.uni-trier.de/pers/hd/w/Wang_0011:Gang">DBLP</a> &middot;
-              <a href="https://twitter.com/ffmagicbean">Twitter</a>
-            </p>
-          </div>
-        </div>
+    <header class="profile-header">
+      <img class="avatar-lg" src="image/avatar.svg" alt="Gang Wang" />
+      <div class="profile-text">
+        <h1>Gang Wang</h1>
+        <p class="profile-role">Research Scientist &middot; ByteDance</p>
+        <p class="profile-note">On academic leave from the University of Illinois Urbana-Champaign since June 2025</p>
       </div>
-    </div>
+    </header>
+
+    <section id="about" class="page-section">
+      <h2>About</h2>
+%s
+    </section>
+
+    <section id="publications" class="page-section">
+      <h2>Publications</h2>
+      <p class="text-muted"><small>The documents listed below have been provided by the contributing authors as a means to ensure timely dissemination of scholarly and technical work on a noncommercial basis. Copyright and all rights therein are maintained by the authors or by other copyright holders.</small></p>
+      <p class="text-muted"><small>
+        <span class="label label-success">C</span> Conference Proceeding |
+        <span class="label label-danger">J</span> Journal Article |
+        <span class="label label-default">W</span> Workshop Proceeding
+      </small></p>
+%s
+    </section>
+
+    <section id="press" class="page-section">
+      <h2>Press</h2>
+%s
+    </section>
+
+    <section id="students" class="page-section">
+      <h2>Students</h2>
+%s
+    </section>
+
+    <section id="activities" class="page-section">
+      <h2>Professional Activities</h2>
+%s
+    </section>
+
+    <section id="datasets" class="page-section">
+      <h2>Datasets &amp; Tools</h2>
+%s
+    </section>
+
+    <section id="news-archive" class="page-section">
+      <h2>News</h2>
+%s
+    </section>
   </div>
 
   <footer class="site-footer">
@@ -393,7 +369,6 @@ PAGE = """<!DOCTYPE html>
 
 PAGE = PAGE % (
     "\n".join('          <li><a href="%s">%s</a></li>' % (href, label) for href, label in NAV),
-    LINKS,
     BIO,
     "\n".join(PUBLICATIONS),
     PRESS_BLOCK,

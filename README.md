@@ -1,7 +1,8 @@
 # Gang Wang — personal homepage
 
 Static single-page site for **https://xx3416.github.io/**, styled after the
-layout of [gangw.cs.illinois.edu](https://gangw.cs.illinois.edu/).
+typography of [gangw.cs.illinois.edu](https://gangw.cs.illinois.edu/) but
+relaid out as a single centred column.
 
 No build step is required: GitHub Pages serves `index.html` straight from the
 repository root.
@@ -10,27 +11,34 @@ repository root.
 
 | Area | Contents |
 | --- | --- |
-| Navbar | Name + affiliation, in-page anchors (Home, Publications, Press, Students, Activities, Datasets, News, CV) |
-| Sidebar | Avatar, contact, scholar/DBLP/Twitter/GitHub links |
-| Main column | Bio, publications (2011 → 2027), press coverage, students, professional service, datasets & tools, archived news, CV |
+| Navbar | Name + affiliation, in-page anchors (Home, About, Publications, Press, Students, Activities, Datasets, News) |
+| Header | Portrait, name, role, academic-leave status |
+| Body | About, publications (2011 → 2027), press coverage, students, professional service, datasets & tools, news |
+
+## What was removed
+
+The page carries no way to contact or trace the person it describes:
+
+* e-mail address, UIUC office address and phone number
+* CV (both the navbar link, the section and `CV.pdf`)
+* Google Scholar, DBLP, Twitter and GitHub profile links
+* the sidebar's CLASS teaching list, news column and sponsor logos
+
+The remaining external links are the publication PDFs and code repositories
+that the reference site itself publishes — see `STRIP_REFERENCE_LINKS` below.
 
 ## Adaptations vs. the reference site
 
-* **Email removed** — the contact block lists the office address and phone only.
 * **Portrait replaced** with a neutral `GW` initials avatar (`image/avatar.svg`).
 * **University wordmark replaced** with plain `ByteDance` text in the navbar.
 * **Bio rewritten** to state that Gang Wang is a Research Scientist at ByteDance
   and has been on academic leave from UIUC since June 2025.
-* **Sidebar trimmed** — the UIUC office address, phone, CLASS teaching list,
-  news column and sponsor logos were dropped; the sidebar now holds just the
-  avatar, the contact line and the scholar/DBLP/Twitter/GitHub buttons. All 62
-  news items live in the "Archived News" section of the main column, which the
-  navbar reaches through the **News** link.
+* **Single column** — the reference's 3/9 sidebar split is gone; the page is
+  one centred column with the portrait in a header block.
 * **Single page** — the reference's `publication.html`, `press.html`,
   `students.html`, `activity.html` and `data.html` content is merged into
   in-page sections, and the navbar links are anchors.
-* Paper/asset links point back at `gangw.cs.illinois.edu`, since the PDFs and
-  datasets themselves are not hosted here.
+* All 62 news items live in the "News" section of the body.
 
 ## Layout files
 
@@ -42,7 +50,6 @@ css/site.css        local overrides
 css/*.js            jQuery + Bootstrap (navbar toggle)
 image/avatar.svg    portrait placeholder
 fonts/              pushpin icon
-CV.pdf              curriculum vitae
 ```
 
 ## Regenerating `index.html`
@@ -57,6 +64,10 @@ python build_site.py
 
 The script rewrites relative links, strips HTML comments, and rebalances
 `<p>`/`<div>`/`<em>`/`<a>` markup that the source pages leave unbalanced.
+
+Set `STRIP_REFERENCE_LINKS = True` at the top of that script to render the
+paper/dataset links back to `gangw.cs.illinois.edu` as plain text, leaving the
+page with no path back to the reference site at all.
 
 ## Publishing
 

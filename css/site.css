@@ -1,25 +1,22 @@
 /* Site-specific styles layered on top of the Bootstrap 3.3.4 + non-responsive
    stylesheet used by the reference layout (gangw.cs.illinois.edu).
-   The rules here mirror the inline <style> block of the reference page and
-   add a few affordances needed by the single-page version. */
+
+   The page is a single centred column: the reference's sidebar was trimmed
+   down to an avatar and a status line, so it no longer earns a column of its
+   own. */
 
 body {
   padding-top: 60px;
   padding-bottom: 40px;
+  color: #333;
 }
 
-.border-right {
-  border-right: 1px solid #ddd;
-}
-
-.border-left {
-  border-left: 1px solid #ddd;
-}
-
-.borders {
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-  margin: -1px;
+/* The reference stylesheet pins a 900px minimum width; allow the page to
+   shrink on small screens instead. */
+body,
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  min-width: 0;
 }
 
 /* Fixed navbar + in-page anchors: keep headings clear of the navbar. */
@@ -30,9 +27,7 @@ section,
 #students,
 #activities,
 #datasets,
-#news-archive,
-#cv,
-#links {
+#news-archive {
   scroll-margin-top: 75px;
 }
 
@@ -49,54 +44,85 @@ section,
   opacity: 0.92;
 }
 
-.navbar-brand + .navbar-brand {
-  margin-left: 6px;
-}
-
-.navbar-brand {
-  padding-top: 18px;
-  padding-bottom: 18px;
-}
-
-/* Neutral portrait placeholder. */
-.avatar {
-  border-radius: 4px;
-  display: block;
-  width: 200px;
-  height: 200px;
-  margin-bottom: 10px;
-}
-
-/* Sidebar blocks. */
-.bs-component {
-  margin-bottom: 22px;
-}
-
-.bs-component h3 {
-  margin-top: 6px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid #ddd;
-  font-size: 17px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #555;
-}
-
-.muted-note {
-  color: #777;
-  font-size: 12px;
-  font-style: italic;
-}
-
-.news-item {
-  font-size: 13px;
-  line-height: 1.45;
-  margin: 0 0 12px 0;
+.affiliation-brand {
   padding-left: 2px;
 }
 
-.news-item img {
-  margin-right: 4px;
+.navbar-default .navbar-brand {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.navbar-nav > li > a {
+  padding-top: 19px;
+  padding-bottom: 19px;
+}
+
+/* ---------------------------------------------------------------- page */
+
+.page-wrap {
+  max-width: 960px;
+}
+
+/* Header: portrait beside the name, role and status. */
+.profile-header {
+  display: flex;
+  align-items: center;
+  padding: 34px 0 28px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.avatar-lg {
+  width: 128px;
+  height: 128px;
+  border-radius: 6px;
+  flex: 0 0 auto;
+  margin-right: 30px;
+}
+
+.profile-text h1 {
+  margin: 0 0 8px 0;
+  font-size: 38px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.profile-role {
+  margin: 0 0 6px 0;
+  font-size: 19px;
+  color: #333;
+}
+
+.profile-note {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+  font-style: italic;
+}
+
+/* Sections. */
+.page-section {
+  padding-top: 28px;
+  margin-top: 28px;
+  border-top: 1px solid #eee;
+}
+
+.page-section:first-of-type {
+  border-top: none;
+  margin-top: 8px;
+}
+
+.page-section h2 {
+  margin: 0 0 16px 0;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #eee;
+  font-size: 21px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #444;
 }
 
 /* Publication list. */
@@ -118,31 +144,47 @@ section,
   margin-top: 18px;
 }
 
-/* Section spacing in the main column. */
-#publications,
-#press,
-#students,
-#activities,
-#datasets,
-#news-archive,
-#cv,
-#links {
-  margin-top: 30px;
-  padding-top: 10px;
-  border-top: 1px solid #eee;
+/* News entries. */
+.news-item {
+  font-size: 13px;
+  line-height: 1.45;
+  margin: 0 0 12px 0;
+  padding-left: 2px;
 }
 
-#publications {
-  border-top: none;
+.news-item img {
+  margin-right: 4px;
 }
 
 /* Footer. */
 .site-footer {
   border-top: 1px solid #ddd;
-  margin-top: 30px;
+  margin-top: 40px;
   padding: 18px 0 0 0;
 }
 
 .site-footer p {
   font-size: 12px;
+}
+
+/* Narrow screens: stack the header. */
+@media (max-width: 620px) {
+  body {
+    padding-top: 56px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar-lg {
+    margin: 0 0 18px 0;
+    width: 104px;
+    height: 104px;
+  }
+
+  .profile-text h1 {
+    font-size: 30px;
+  }
 }
