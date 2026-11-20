@@ -25,6 +25,8 @@ The page carries no way to contact or trace the person it describes:
 * the sidebar's CLASS teaching list, news column and sponsor logos
 * the students section and its navigation entry
 * the 2026 and 2027 publication entries (see `EXCLUDE_YEARS` below)
+* the `Code` and `Press` quick-link buttons on the publication entries
+  (see `REMOVE_QUICKLINKS` below)
 
 The paper and dataset links that used to point back at the reference site
 are now rendered as inert chips — the page contains no path back to it.

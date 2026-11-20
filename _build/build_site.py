@@ -35,6 +35,12 @@ STRIP_REFERENCE_LINKS = True
 # Publication years to leave out of the list entirely.
 EXCLUDE_YEARS = {"2026", "2027"}
 
+# Quick-link buttons to drop from the publication entries.
+REMOVE_QUICKLINKS = {"Code", "Press"}
+QUICKLINK = re.compile(
+    r'<a[^>]*class="[^"]*btn-xs[^"]*"[^>]*>\s*(?:%s)\s*</a>' % "|".join(REMOVE_QUICKLINKS),
+    re.I)
+
 # The reference snapshot is kept in the repository so the page can be rebuilt
 # offline, which means it must not carry the contact details of the person it
 # describes. These are stripped from the snapshot on every build and the
@@ -160,6 +166,8 @@ def block(text, start, end, start_after=False):
 def clean(fragment):
     """Prepare a raw reference fragment for embedding."""
     fragment = absolutize(re.sub(r"\s+", " ", fragment.strip()))
+    fragment = QUICKLINK.sub("", fragment)
+    fragment = re.sub(r"\s{2,}", " ", fragment)
     if STRIP_REFERENCE_LINKS:
         # Unlink the papers/datasets that live on the reference site, so the
         # page carries no path back to it. The source markup mixes upper and
