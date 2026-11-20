@@ -30,7 +30,24 @@ REF = "https://gangw.cs.illinois.edu/"
 # When True, links back to the reference site (paper PDFs, datasets) are
 # rendered as plain text instead of anchors. Flip to True to remove every
 # path from this page back to gangw.cs.illinois.edu.
-STRIP_REFERENCE_LINKS = False
+STRIP_REFERENCE_LINKS = True
+
+# Publication years to leave out of the list entirely.
+EXCLUDE_YEARS = {"2026", "2027"}
+
+# The reference snapshot is kept in the repository so the page can be rebuilt
+# offline, which means it must not carry the contact details of the person it
+# describes. These are stripped from the snapshot on every build and the
+# cleaned copy is written back to disk.
+SNAPSHOT_CONTACT = [
+    (re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"), "[email removed]"),
+    (re.compile(r"Phone:\s*[\d\-\(\)\. ]{7,20}"), "Phone: [removed]"),
+    (re.compile(r"Office:.*?Urbana, IL \d{5}-\d{4}\s*<br>", re.S), ""),
+    (re.compile(r"href=\"[^\"]*scholar\.google\.com/citations[^\"]*\""), "href=\"#\""),
+    (re.compile(r"href=\"[^\"]*dblp\.uni-trier\.de[^\"]*\""), "href=\"#\""),
+    (re.compile(r"href=\"[^\"]*twitter\.com/[^\"]*\""), "href=\"#\""),
+    (re.compile(r"href=\"https?://gangw\.cs\.illinois\.edu[^\"]*\"", re.I), "href=\"#\""),
+]
 
 # Reference sub-pages become in-page anchors on the single Home page.
 PAGE_MAP = {
@@ -48,6 +65,15 @@ PAGE_MAP = {
 def read(name):
     with io.open(os.path.join(SRC, name), encoding="utf-8", errors="ignore") as fh:
         return fh.read()
+
+
+def sanitize_snapshot(name, text):
+    """Strip contact details from a reference snapshot and write it back."""
+    for pattern, replacement in SNAPSHOT_CONTACT:
+        text = pattern.sub(replacement, text)
+    with io.open(os.path.join(SRC, name), "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return text
 
 
 def strip_comments(text):
@@ -137,16 +163,23 @@ def clean(fragment):
     fragment = absolutize(re.sub(r"\s+", " ", fragment.strip()))
     if STRIP_REFERENCE_LINKS:
         # Unlink the papers/datasets that live on the reference site, so the
-        # page carries no path back to it.
+        # page carries no path back to it. The source markup mixes upper and
+        # lower case tag names, so match case-insensitively.
         fragment = re.sub(r'<a href="%s[^"]*"[^>]*>(.*?)</a>' % re.escape(REF),
-                          r'<span class="offlink">\1</span>', fragment, flags=re.S)
+                          r'<span class="offlink">\1</span>', fragment, flags=re.S | re.I)
     return rebalance(fragment)
 
 
 # --------------------------------------------------------------------------
 # 1. Reference fragments
 # --------------------------------------------------------------------------
-home = strip_comments(read("gangw.html"))
+home = strip_comments(sanitize_snapshot("gangw.html", read("gangw.html")))
+
+# Every other snapshot is scrubbed on disk too, so no copy of the reference
+# site keeps a contact detail or a back-link.
+for _snapshot in ("publication.html", "press.html", "students.html",
+                  "activity.html", "data.html"):
+    sanitize_snapshot(_snapshot, read(_snapshot))
 
 news_html = block(home, "<h3>NEWS</h3>", "<h3>PRESS</h3>")
 press_html = block(home, "<h3>PRESS</h3>", "<h3>LINKS</h3>")
@@ -248,6 +281,8 @@ BIO = """
 
 PUBLICATIONS = []
 for year, items in pub_groups:
+    if year in EXCLUDE_YEARS:
+        continue
     PUBLICATIONS.append('<h4 class="pub-year">%s</h4>\n            <ul>' % year)
     for it in items:
         PUBLICATIONS.append("              <li>%s</li>" % clean(it))
@@ -384,8 +419,9 @@ with io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
 print("index.html written: %d bytes" % len(PAGE.encode("utf-8")))
 print("  news      : %d (all in the archived-news section)" % len(news_items))
 print("  press     : %d" % len(press_items))
-print("  pubs      : %d year groups, %d entries" % (
-    len(pub_groups), sum(len(i) for _, i in pub_groups)))
+kept = [(y, i) for y, i in pub_groups if y not in EXCLUDE_YEARS]
+print("  pubs      : %d year groups, %d entries (excluded years: %s)" % (
+    len(kept), sum(len(i) for _, i in kept), ", ".join(sorted(EXCLUDE_YEARS)) or "none"))
 print("  students  : %d sections" % len(students_sections))
 print("  activity  : %d sections" % len(activity_sections))
 print("  datasets  : %d sections" % len(data_sections))

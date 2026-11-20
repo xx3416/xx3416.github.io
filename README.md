@@ -23,6 +23,7 @@ The page carries no way to contact or trace the person it describes:
 * CV (both the navbar link, the section and `CV.pdf`)
 * Google Scholar, DBLP, Twitter and GitHub profile links
 * the sidebar's CLASS teaching list, news column and sponsor logos
+* the 2026 and 2027 publication entries (see `EXCLUDE_YEARS` below)
 
 The remaining external links are the publication PDFs and code repositories
 that the reference site itself publishes — see `STRIP_REFERENCE_LINKS` below.
