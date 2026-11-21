@@ -71,11 +71,12 @@ PAGE_MAP = {
     "index.html": "#home",
 }
 
-# The page is published twice: at the site root (https://xx3416.github.io/)
-# and one directory below it (https://xx3416.github.io/gangwang/#home).
-# The second copy needs its asset paths rewritten, because from /gangwang/ a
-# relative "css/..." would resolve to /gangwang/css/... instead of /css/...
+# The site lives one directory below the site root: the canonical address is
+# https://xx3416.github.io/gangwang/ and the site root only redirects there.
+# The page's asset paths are rewritten for that location, because from
+# /gangwang/ a relative "css/..." would resolve to /gangwang/css/...
 SUBDIR = "gangwang"
+CANONICAL = "https://xx3416.github.io/%s/" % SUBDIR
 
 # References to the site's own assets, e.g. href="css/site.css" src="image/avatar.svg".
 ASSET_REF = re.compile(
@@ -85,6 +86,33 @@ ASSET_REF = re.compile(
 def root_absolute(page):
     """Rewrite relative asset references to absolute paths from the site root."""
     return ASSET_REF.sub(r'\1/\2"', page)
+
+
+def with_canonical(page):
+    """Point the page at its canonical address."""
+    tag = '  <link rel="canonical" href="%s">\n' % CANONICAL
+    return page.replace('  <link rel="icon"', tag + '  <link rel="icon"', 1)
+
+
+# The site root redirects to the canonical address. The fragment of the old
+# URL is carried over, so https://xx3416.github.io/#publications still lands
+# on the publications section.
+REDIRECT_PAGE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Gang Wang</title>
+  <link rel="canonical" href="%(canonical)s">
+  <meta http-equiv="refresh" content="0; url=%(canonical)s#home">
+  <script>
+    window.location.replace("%(canonical)s" + (window.location.hash || "#home"));
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="%(canonical)s">%(canonical)s</a>&hellip;</p>
+</body>
+</html>
+""" % {"canonical": CANONICAL}
 
 
 def read(name):
@@ -430,20 +458,22 @@ PAGE = PAGE % (
     news_block(news_items[NEWS_SKIP:]),
 )
 
-with io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
-    fh.write(PAGE)
-
-# The same page, one directory below the site root, so the site is also
-# reachable as https://xx3416.github.io/gangwang/#home
+# The site lives one directory below the site root; the root itself is a
+# redirect stub, so the site has exactly one address:
+# https://xx3416.github.io/gangwang/
 subdir = os.path.join(OUT, SUBDIR)
 if not os.path.isdir(subdir):
     os.makedirs(subdir)
-subpage = root_absolute(PAGE)
+subpage = root_absolute(with_canonical(PAGE))
 with io.open(os.path.join(subdir, "index.html"), "w", encoding="utf-8") as fh:
     fh.write(subpage)
 
-print("index.html written: %d bytes" % len(PAGE.encode("utf-8")))
+with io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
+    fh.write(REDIRECT_PAGE)
+
 print("%s/index.html written: %d bytes" % (SUBDIR, len(subpage.encode("utf-8"))))
+print("index.html written: %d bytes (redirect to %s)" % (
+    len(REDIRECT_PAGE.encode("utf-8")), CANONICAL))
 print("  news      : %d shown (%d skipped, oldest shown: %s)" % (
     len(news_items) - NEWS_SKIP, NEWS_SKIP,
     (re.search(r"<strong>([^<]+)</strong>", news_items[NEWS_SKIP]).group(1)

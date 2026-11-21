@@ -1,11 +1,12 @@
 # Gang Wang — personal homepage
 
-Static single-page site for **https://xx3416.github.io/**, styled after the
-typography of [gangw.cs.illinois.edu](https://gangw.cs.illinois.edu/) but
-relaid out as a single centred column.
+Static single-page site for **https://xx3416.github.io/gangwang/**, styled
+after the typography of
+[gangw.cs.illinois.edu](https://gangw.cs.illinois.edu/) but relaid out as a
+single centred column.
 
-No build step is required: GitHub Pages serves `index.html` straight from the
-repository root.
+No build step is required: GitHub Pages serves `gangwang/index.html` straight
+from the repository.
 
 ## Layout
 
@@ -15,20 +16,24 @@ repository root.
 | Header | Portrait, name, role, academic-leave status |
 | Body | About, publications (2011 → 2025), press coverage, professional service, datasets & tools, news |
 
-## The two addresses
+## The address
 
-The page is published twice, from the same source:
+The site has one address, **`https://xx3416.github.io/gangwang/`**:
 
 | URL | File |
 | --- | --- |
-| `https://xx3416.github.io/` | `index.html` |
-| `https://xx3416.github.io/gangwang/` | `gangwang/index.html` |
+| `https://xx3416.github.io/gangwang/` | `gangwang/index.html` — the page |
+| `https://xx3416.github.io/` | `index.html` — redirect stub |
 
-`gangwang/index.html` is the same page with its asset paths made absolute
-(`/css/...`, `/fonts/...`, `/image/...`), because from `/gangwang/` a relative
-`css/...` would resolve to `/gangwang/css/...`. Both copies carry
-`<body id="home">`, so `.../#home` and `.../gangwang/#home` both land on the
-top of the page.
+`index.html` at the root only redirects: a meta refresh plus
+`window.location.replace`, which carries the fragment of the old URL over, so
+`https://xx3416.github.io/#publications` still lands on the publications
+section. `gangwang/index.html` carries `<link rel="canonical">` pointing at
+itself, so search engines index the `/gangwang/` address.
+
+The page's asset paths are absolute (`/css/...`, `/fonts/...`, `/image/...`),
+because from `/gangwang/` a relative `css/...` would resolve to
+`/gangwang/css/...`.
 
 ## What was removed
 
@@ -64,8 +69,8 @@ are now rendered as inert chips — the page contains no path back to it.
 ## Layout files
 
 ```
-index.html          the page
-gangwang/index.html the same page, one directory below the root
+index.html          redirect to /gangwang/
+gangwang/index.html the page
 css/bootstrap.css   Bootstrap 3.3.4 (from the reference site)
 css/non-responsive.css
 css/site.css        local overrides
@@ -74,10 +79,10 @@ image/avatar.svg    portrait placeholder
 fonts/              pushpin icon
 ```
 
-## Regenerating `index.html`
+## Regenerating the page
 
-`_build/build_site.py` regenerates `index.html` and `gangwang/index.html` from
-the reference snapshots in `_build/src/`:
+`_build/build_site.py` regenerates `gangwang/index.html` and the root
+redirect from the reference snapshots in `_build/src/`:
 
 ```bash
 cd _build
@@ -94,8 +99,8 @@ page with no path back to the reference site at all.
 ## Publishing
 
 The repository should be named `xx3416.github.io` so GitHub Pages serves it at
-`https://xx3416.github.io/`. Enable Pages with **Settings → Pages → Source:
-Deploy from a branch → `main` / root (`/`)**.
+`https://xx3416.github.io/gangwang/`. Enable Pages with **Settings → Pages →
+Source: Deploy from a branch → `main` / root (`/`)**.
 
 Push over SSH using the dedicated key configured on this machine:
 
