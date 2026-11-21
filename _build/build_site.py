@@ -71,6 +71,21 @@ PAGE_MAP = {
     "index.html": "#home",
 }
 
+# The page is published twice: at the site root (https://xx3416.github.io/)
+# and one directory below it (https://xx3416.github.io/gangwang/#home).
+# The second copy needs its asset paths rewritten, because from /gangwang/ a
+# relative "css/..." would resolve to /gangwang/css/... instead of /css/...
+SUBDIR = "gangwang"
+
+# References to the site's own assets, e.g. href="css/site.css" src="image/avatar.svg".
+ASSET_REF = re.compile(
+    r'((?:href|src)=")(?!#|https?:|//|mailto:|data:|javascript:)([^"/][^"]*)"')
+
+
+def root_absolute(page):
+    """Rewrite relative asset references to absolute paths from the site root."""
+    return ASSET_REF.sub(r'\1/\2"', page)
+
 
 def read(name):
     with io.open(os.path.join(SRC, name), encoding="utf-8", errors="ignore") as fh:
@@ -418,7 +433,17 @@ PAGE = PAGE % (
 with io.open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as fh:
     fh.write(PAGE)
 
+# The same page, one directory below the site root, so the site is also
+# reachable as https://xx3416.github.io/gangwang/#home
+subdir = os.path.join(OUT, SUBDIR)
+if not os.path.isdir(subdir):
+    os.makedirs(subdir)
+subpage = root_absolute(PAGE)
+with io.open(os.path.join(subdir, "index.html"), "w", encoding="utf-8") as fh:
+    fh.write(subpage)
+
 print("index.html written: %d bytes" % len(PAGE.encode("utf-8")))
+print("%s/index.html written: %d bytes" % (SUBDIR, len(subpage.encode("utf-8"))))
 print("  news      : %d shown (%d skipped, oldest shown: %s)" % (
     len(news_items) - NEWS_SKIP, NEWS_SKIP,
     (re.search(r"<strong>([^<]+)</strong>", news_items[NEWS_SKIP]).group(1)

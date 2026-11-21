@@ -15,6 +15,21 @@ repository root.
 | Header | Portrait, name, role, academic-leave status |
 | Body | About, publications (2011 → 2025), press coverage, professional service, datasets & tools, news |
 
+## The two addresses
+
+The page is published twice, from the same source:
+
+| URL | File |
+| --- | --- |
+| `https://xx3416.github.io/` | `index.html` |
+| `https://xx3416.github.io/gangwang/` | `gangwang/index.html` |
+
+`gangwang/index.html` is the same page with its asset paths made absolute
+(`/css/...`, `/fonts/...`, `/image/...`), because from `/gangwang/` a relative
+`css/...` would resolve to `/gangwang/css/...`. Both copies carry
+`<body id="home">`, so `.../#home` and `.../gangwang/#home` both land on the
+top of the page.
+
 ## What was removed
 
 The page carries no way to contact or trace the person it describes:
@@ -50,6 +65,7 @@ are now rendered as inert chips — the page contains no path back to it.
 
 ```
 index.html          the page
+gangwang/index.html the same page, one directory below the root
 css/bootstrap.css   Bootstrap 3.3.4 (from the reference site)
 css/non-responsive.css
 css/site.css        local overrides
@@ -60,8 +76,8 @@ fonts/              pushpin icon
 
 ## Regenerating `index.html`
 
-`_build/build_site.py` regenerates `index.html` from the reference snapshots in
-`_build/src/`:
+`_build/build_site.py` regenerates `index.html` and `gangwang/index.html` from
+the reference snapshots in `_build/src/`:
 
 ```bash
 cd _build
